@@ -18,8 +18,13 @@ def gerar_tabelas(progresso):
     msg.setText("Selecionar pasta ou arquivo?")
     msg.setWindowTitle("Selecionar")
     usar_icone(msg)
+    msg.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
     btn_pasta = msg.addButton("Pasta", QtWidgets.QMessageBox.AcceptRole)
+    btn_pasta.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold; padding: 10px;")
+    btn_pasta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
     btn_arquivo = msg.addButton("Arquivo", QtWidgets.QMessageBox.AcceptRole)
+    btn_arquivo.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold; padding: 10px;")
+    btn_arquivo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
     msg.exec()
     progresso.setValue(0)
     
@@ -36,7 +41,9 @@ def gerar_tabelas(progresso):
         msg.setIcon(QtWidgets.QMessageBox.Warning)
         msg.setText("Nenhum arquivo selecionado ou nenhum arquivo encontrado na pasta.")
         msg.setWindowTitle("Erro")
+        msg.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
         usar_icone(msg)
+        msg.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         msg.exec()
         return
 
@@ -235,9 +242,12 @@ def gerar_tabelas(progresso):
         msg_salvar.setIcon(QtWidgets.QMessageBox.Information)
         msg_salvar.setText("Deseja salvar o arquivo gerado?")
         msg_salvar.setWindowTitle("Salvar Arquivo")
+        msg_salvar.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
         usar_icone(msg_salvar)
         btn_salvar = msg_salvar.addButton("Salvar", QtWidgets.QMessageBox.AcceptRole)
-        msg_salvar.addButton("Cancelar", QtWidgets.QMessageBox.RejectRole)
+        btn_salvar.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold; padding: 10px;")
+        btn_salvar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        msg_salvar.addButton("Cancelar", QtWidgets.QMessageBox.RejectRole).setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold; padding: 10px;")
         msg_salvar.exec()
 
         if msg_salvar.clickedButton() == btn_salvar:
@@ -268,6 +278,7 @@ def gerar_tabelas(progresso):
                 msg.setText(f"Arquivo salvo com sucesso em {nome_arquivo_salvar}!")
                 msg.setWindowTitle("Sucesso")
                 usar_icone(msg)
+                msg.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
                 msg.exec()
                 progresso.setValue(0)
             else:
@@ -276,6 +287,7 @@ def gerar_tabelas(progresso):
                 msg.setText("Nenhum arquivo selecionado.")
                 msg.setWindowTitle("Erro")
                 usar_icone(msg)
+                msg.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
                 msg.exec()
 
         else:
@@ -285,6 +297,7 @@ def gerar_tabelas(progresso):
             msg.setText("Operação cancelada.")
             msg.setWindowTitle("Erro")
             usar_icone(msg)
+            msg.setStyleSheet("background-color: #001F3F; color: #ffffff; font-size: 20px; font-weight: bold;")
             msg.exec()
     except Exception as e:
         print(f"Erro ao processar o arquivo: {e}")
@@ -298,6 +311,7 @@ def main():
 
     janela.setWindowTitle("Gerador de Tabelas")
     janela.setGeometry(100, 100, 800, 600)
+    janela.setStyleSheet("background-color: #030d18;")
 
     widget_central = QtWidgets.QWidget()
     janela.setCentralWidget(widget_central)
